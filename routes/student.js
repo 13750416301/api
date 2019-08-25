@@ -2,11 +2,12 @@ var express = require('express');
 var mysql = require('mysql')
 var router = express.Router();
 var option = {
-  host: 'localhost',
+  // host: 'localhost',
+  host: '119.23.46.237',
   user: 'root',
-  password: '1063706696',
+  password: 'admin',
   port: '3306',
-  database: 'mydb',
+  database: 'mysql',
   connectTimeout: 5000
 }
 

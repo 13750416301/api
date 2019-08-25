@@ -11,6 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var imgUploadRouter = require('./routes/upload')
 var student = require('./routes/student')
+var getHomePage = require('./routes/getHomePage')
 
 
 var app = express();
@@ -35,7 +36,9 @@ app.use('/uploads/',express.static(path.join(__dirname, 'uploads')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/upload', imgUploadRouter);
-app.use('/student', student)
+app.use('/student', student);
+app.use('/getHomePage', getHomePage);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
