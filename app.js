@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var imgUploadRouter = require('./routes/upload')
 var student = require('./routes/student')
 var getHomePage = require('./routes/getHomePage')
+var getVideoList =require('./routes/getVideoList')
 
 
 var app = express();
@@ -38,6 +39,7 @@ app.use('/users', usersRouter);
 app.use('/upload', imgUploadRouter);
 app.use('/student', student);
 app.use('/getHomePage', getHomePage);
+app.use('/getVideoList',getVideoList);
 
 
 // catch 404 and forward to error handler

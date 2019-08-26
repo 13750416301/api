@@ -20,7 +20,7 @@ function Result({code = 0, msg = '200', data = {video: null, images: null, artic
 };
 
 router.get('/', (req, res) => {
-  connect.query('SELECT * FROM video; SELECT * FROM images; SELECT * FROM article;', (err, result) => res.json(new Result({
+  connect.query('SELECT * FROM video limit 0,6; SELECT * FROM images limit 0,6; SELECT * FROM article limit 0,3;', (err, result) => res.json(new Result({
     data: {
       video: result[0],
       images: result[1],
