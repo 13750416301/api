@@ -9,12 +9,13 @@ var bodyParser = require('body-parser');
 // 定义请求的路由
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var imgUploadRouter = require('./routes/upload')
-var student = require('./routes/student')
-var getHomePage = require('./routes/getHomePage')
-var getVideoList =require('./routes/getVideoList')
-var getArticleList =require('./routes/getArticleList')
-var getImageList =require('./routes/getImageList')
+var imgUploadRouter = require('./routes/upload');
+var student = require('./routes/student');
+var getHomePage = require('./routes/getHomePage');
+var getVideoList = require('./routes/getVideoList');
+var getArticleList = require('./routes/getArticleList');
+var getImageList = require('./routes/getImageList');
+var getImageListByArea = require('./routes/getImageListByArea');
 
 
 var app = express();
@@ -41,9 +42,10 @@ app.use('/users', usersRouter);
 app.use('/upload', imgUploadRouter);
 app.use('/student', student);
 app.use('/getHomePage', getHomePage);
-app.use('/getVideoList',getVideoList);
-app.use('/getArticleList',getArticleList)
-app.use('/getImageList',getImageList)
+app.use('/getVideoList', getVideoList);
+app.use('/getArticleList', getArticleList);
+app.use('/getImageList', getImageList);
+app.use('/getImageListByArea', getImageListByArea);
 
 
 // catch 404 and forward to error handler
