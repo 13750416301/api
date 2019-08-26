@@ -15,7 +15,7 @@ var option = {
 var connect = mysql.createConnection(option);
 function Result({code = 0, msg = '200', data = {anime: null, game: null, life: null}}) {
   this.code = code;
-  this.msg = msg;
+  this.msg = msg; 
   this.data = data;
 };
 
