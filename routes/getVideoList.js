@@ -20,7 +20,7 @@ function Result({code = 0, msg = '200', data = {anime: null, game: null, life: n
 };
 
 router.get('/', (req, res) => {
-    connect.query('SELECT * FROM video where area="动漫" ;SELECT * FROM video where area="游戏" ;SELECT * FROM video where area="生活"', (err, result) => res.json(new Result({
+    connect.query('SELECT * FROM video where area="动漫" limit 0,6 ;SELECT * FROM video where area="游戏" limit 0,6 ;SELECT * FROM video where area="生活" limit 0,6', (err, result) => res.json(new Result({
       data: {
         anime: result[0],
         game: result[1],
