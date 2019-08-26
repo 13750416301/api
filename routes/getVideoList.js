@@ -22,7 +22,7 @@ function Result({code = 0, msg = '200', data = {video: null}}) {
 router.get('/', (req, res) => {
   connect.query('SELECT * FROM video;', (err, result) => res.json(new Result({
     data: {
-      video: result[0],
+      video: result,
     }
   })))
 })
