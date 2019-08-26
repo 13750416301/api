@@ -13,7 +13,7 @@ var option = {
 }
 
 var connect = mysql.createConnection(option);
-function Result({code = 0, msg = '200', data = {video:null}}) {
+function Result({code = 0, msg = '200', data = {article:null}}) {
   this.code = code;
   this.msg = msg;
   this.data = data;
@@ -22,7 +22,7 @@ function Result({code = 0, msg = '200', data = {video:null}}) {
 router.get('/', (req, res) => {
   connect.query('SELECT * FROM article;', (err, result) => res.json(new Result({
     data: { 
-      video: result,
+      article: result,
     }
   })))
 })
