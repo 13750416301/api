@@ -13,18 +13,20 @@ var option = {
 }
 
 var connect = mysql.createConnection(option);
-function Result({code = 0, msg = '200', data = {video: null}}) {
+function Result({code = 0, msg = '200', data = {anime: null, game: null, life: null}}) {
   this.code = code;
   this.msg = msg;
   this.data = data;
 };
 
 router.get('/', (req, res) => {
-  connect.query('SELECT * FROM video;', (err, result) => res.json(new Result({
-    data: {
-      video: result,
-    }
-  })))
-})
+    connect.query('SELECT * FROM video where area="动漫" ;SELECT * FROM video where area="游戏" ;SELECT * FROM video where area="生活"', (err, result) => res.json(new Result({
+      data: {
+        video: result[0],
+        images: result[1],
+        article: result[2]
+      }
+    })))
+  })
 
-module.exports = router;
+module.exports = router; 

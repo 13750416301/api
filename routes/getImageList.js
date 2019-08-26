@@ -21,10 +21,10 @@ function Result({code = 0, msg = '200', data = {video: null}}) {
 
 router.get('/', (req, res) => {
   connect.query('SELECT * FROM images;', (err, result) => res.json(new Result({
-    data: {
+    data: { 
       video: result,
     }
   })))
 })
 
-module.exports = router;
+module.exports = router; 

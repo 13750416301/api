@@ -1,7 +1,7 @@
 var express = require('express');
 var mysql = require('mysql');
 var router = express.Router();
-var option = {
+var option = { 
   // host: 'localhost',
   host: '119.23.46.237',
   user: 'root',
@@ -13,7 +13,7 @@ var option = {
 }
 
 var connect = mysql.createConnection(option);
-function Result({code = 0, msg = '200', data = {video: null}}) {
+function Result({code = 0, msg = '200', data = {video:null}}) {
   this.code = code;
   this.msg = msg;
   this.data = data;
