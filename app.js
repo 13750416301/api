@@ -19,7 +19,7 @@ var getImageListByArea = require('./routes/getImageListByArea');
 var getVideoListByArea = require('./routes/getVideoListByArea');
 var getVideoById = require('./routes/getVideoById');
 var getImageById = require('./routes/getImageById');
-
+var getArticleById = require('./routes/getArticleById');
 
 
 
@@ -54,7 +54,7 @@ app.use('/getImageListByArea', getImageListByArea);
 app.use('/getVideoListByArea', getVideoListByArea);
 app.use('/getVideoById',getVideoById);
 app.use('/getImageById',getImageById);
-
+app.use('/getArticleById',getArticleById);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
