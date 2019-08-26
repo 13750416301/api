@@ -14,7 +14,7 @@ var student = require('./routes/student')
 var getHomePage = require('./routes/getHomePage')
 var getVideoList =require('./routes/getVideoList')
 var getArticleList =require('./routes/getArticleList')
-var getImageList =reqiure('./routes/getImageList')
+var getImageList =require('./routes/getImageList')
 
 
 var app = express();

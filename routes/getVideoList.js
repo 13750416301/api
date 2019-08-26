@@ -22,9 +22,9 @@ function Result({code = 0, msg = '200', data = {anime: null, game: null, life: n
 router.get('/', (req, res) => {
     connect.query('SELECT * FROM video where area="动漫" ;SELECT * FROM video where area="游戏" ;SELECT * FROM video where area="生活"', (err, result) => res.json(new Result({
       data: {
-        video: result[0],
-        images: result[1],
-        article: result[2]
+        anime: result[0],
+        game: result[1],
+        life: result[2]
       }
     })))
   })
