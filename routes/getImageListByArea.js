@@ -21,7 +21,6 @@ function Result({code = 0, msg = '200', data = {}}) {
 
 router.get('/', (req, res) => {//返回各分区image  
   var area = req.query.area;
-	console.log('hhaha')
   var query ='SELECT * FROM images where area="' + area + '"';
   connect.query(query, (err, result) => res.json(new Result({
     data: result
