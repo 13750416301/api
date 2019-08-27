@@ -55,9 +55,9 @@ app.use('/getArticleList', getArticleList);
 app.use('/getImageList', getImageList);
 app.use('/getImageListByArea', getImageListByArea);
 app.use('/getVideoListByArea', getVideoListByArea);
-app.use('/getVideoById',getVideoById);
-app.use('/getImageById',getImageById);
-app.use('/getArticleById',getArticleById);
+app.use('/getVideoById', getVideoById);
+app.use('/getImageById', getImageById);
+app.use('/getArticleById', getArticleById);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
