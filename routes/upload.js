@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var multer  = require('multer');//multer 是express官方推荐的文件上传中间件
+var multer  = require('multer');
 var path = require('path');
 // var upload = multer({ dest: 'uploads' })
 var storage = multer.diskStorage({
