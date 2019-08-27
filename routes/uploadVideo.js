@@ -6,8 +6,8 @@ var path = require('path');
 var storage = multer.diskStorage({
   destination: function(req, res, cb) {
     //cb(null, 'C:/Users/FOREVERBOBO/Downloads/My Documents/二级项目3/api/uploads');
-    cb(null,'D:/test1/destination');
-    //cb(null,'C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/ROOT/videoWebSite/video');
+    //cb(null,'D:/test1/destination');
+    cb(null,'C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/ROOT/videoWebSite/video');
   },
   filename: function(req, file, cb) {
     var filenameArr = file.originalname.split('.')
