@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文件上传</title>
+</head>
+<body>
+<h1>文件上传</h1>
+<form action="http://119.23.46.237:3000/uploadVideo/" method="post" enctype="multipart/form-data">
+    <input id="files" type="file" name="video" multiple/> <!-- 这里的multiple属性是允许多文件上传的，单文件上传可以不写此属性（最好都写上）-->
+    <input type="submit" value="上传"/>
+</form>
+</body>
