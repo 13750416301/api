@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var imgUploadRouter = require('./routes/upload');
+var videoUploadRouter = require('./routes/uploadVideo');
 var student = require('./routes/student');
 var getHomePage = require('./routes/getHomePage');
 var getVideoList = require('./routes/getVideoList');
@@ -41,10 +42,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads/',express.static(path.join(__dirname, 'uploads')));
 
+
 // 使用路由
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/upload', imgUploadRouter);
+app.use('/uploadVideo', videoUploadRouter);
 app.use('/student', student);
 app.use('/getHomePage', getHomePage);
 app.use('/getVideoList', getVideoList);
