@@ -21,10 +21,21 @@ var storage = multer.diskStorage({
 
   var addBarrage = multer({storage});
 
-router.post('/',addBarrage.single("barrage"), function(req, res, next) {
+router.post('/',addBarrage.single(), function(req, res, next) {
     //得到文件路径
-  res.json(req.body)
-  
+    var barr=req.body.barrage;
+    var data={
+      barrage:barr
+    }
+    res.json(data);
+    var sql ='insert into barrage (msg) values("' + barr+ '")';
+  connect.query(sql,function (err, rows, fields) {
+      if(err){
+            console.log('INSERT ERROR - ', err.message);
+            return;
+        }
+        console.log("INSERT SUCCESS");
+            });
    });
    
 module.exports = router; 

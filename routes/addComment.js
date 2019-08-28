@@ -21,8 +21,32 @@ var storage = multer.diskStorage({
 
   var addComment = multer({storage});
 
-router.post('/',addComment.single("comment"), function(req, res, next) {
-  res.json(req.body);
+router.post('/',addComment.single(), function(req, res, next) {
+  //获取评论内容
+  var comm=req.body.comment;
+  //获取时间
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth()+1;
+  var day = date.getDate();
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  var time =year+"年"+month+"月"+day+"日"+hour+":"+minute+":"+second;
+  var data={
+    comment:comm,
+    commentTime:time
+  }
+  res.json(data);
+  var sql ='insert into comment (msg,time) values("' + comm+ '","'+time+'")';
+  connect.query(sql,function (err, rows, fields) {
+      if(err){
+            console.log('INSERT ERROR - ', err.message);
+            return;
+        }
+        console.log("INSERT SUCCESS");
+            });
+
    });
    
 module.exports = router; 
