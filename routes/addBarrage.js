@@ -15,8 +15,8 @@ var option = {
 var connect = mysql.createConnection(option);
 var storage = multer.diskStorage({
   destination: function(req, res, cb) {
-    cb(null,'D:/test1/destination');
-    //cb(null,'C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/ROOT/videoWebSite/image');
+   // cb(null,'D:/test1/destination');
+    cb(null,'C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/ROOT/videoWebSite/image');
   }});
 
   var addBarrage = multer({storage});
