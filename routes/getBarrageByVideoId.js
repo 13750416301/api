@@ -23,7 +23,7 @@ router.get('/', (req, res) => {//根据videoId获取弹幕
   var videoId = req.query.videoId;
   var query ='SELECT * FROM barrage where videoId="' + videoId + '"';
   connect.query(query, (err, result) => res.json(new Result({
-    data: result[0]
+    data: result
   })))
 })
 module.exports = router; 

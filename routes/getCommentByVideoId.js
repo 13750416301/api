@@ -23,7 +23,7 @@ router.get('/', (req, res) => {//根据videoId获取评论
   var videoId = req.query.videoId;
   var query ='SELECT * FROM comment where videoId="' + videoId + '"';
   connect.query(query, (err, result) => res.json(new Result({
-    data: result[0]
+    data: result
   })))
 })
 module.exports = router; 
