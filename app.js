@@ -23,6 +23,11 @@ var getImageById = require('./routes/getImageById');
 var getArticleById = require('./routes/getArticleById');
 var addComment = require('./routes/addComment');
 var addBarrage = require('./routes/addBarrage');
+//var signIn = require('./routes/signIn');
+//var signUp = require('./routes/signUp');
+var getBarrageByVideoId = require('./routes/getBarrageByVideoId');
+var getCommentByVideoId = require('./routes/getCommentByVideoId');
+
 
 
 
@@ -62,6 +67,10 @@ app.use('/getImageById', getImageById);
 app.use('/getArticleById', getArticleById);
 app.use('/addComment', addComment);
 app.use('/addBarrage', addBarrage);
+//app.use('/signIn', signIn);
+//app.use('/signUp', signUp);
+app.use('/getBarrageByVideoId', getBarrageByVideoId);
+app.use('/getCommentByVideoId', getCommentByVideoId);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
