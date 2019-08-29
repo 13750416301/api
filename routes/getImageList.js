@@ -20,7 +20,7 @@ function Result({code = 0, msg = '200', data = {anime: null, game: null, life: n
 };
 
 router.get('/', (req, res) => {//返回各分区image   
-  connect.query('SELECT * FROM images where area="动漫" ;SELECT * FROM images where area="游戏" ;SELECT * FROM images where area="生活"', (err, result) => res.json(new Result({
+  connect.query('SELECT * FROM images where area="动漫" limit 0,6 ;SELECT * FROM images where area="游戏" limit 0,6 ;SELECT * FROM images where area="生活" limit 0,6', (err, result) => res.json(new Result({
     data: {
       anime: result[0],
       game: result[1],
