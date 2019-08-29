@@ -13,17 +13,12 @@ var option = {
 }
 
 var connect = mysql.createConnection(option);
-function Result({code = 0, msg = '200', data = {}}) {
-  this.code = code;
-  this.msg = msg; 
-  this.data = data;
-};
+
 
 router.get('/', (req, res) => {//根据id获取某图片  
   var id = req.query.id;
   var query ='SELECT * FROM images where id="' + id + '"';
-  connect.query(query, (err, result) => res.json(new Result({
-    data: result
-  })))
+  connect.query(query, (err, result) => res.json( 
+    result))
 })
 module.exports = router; 
