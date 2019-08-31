@@ -55,9 +55,10 @@ router.post('/', (req, res) =>{
   // })
   if(req.body.username === 'bobo' && req.body.password === '123') {
     // res.json({username: req.body.username, password: req.body.password});
-    req.session.regenerate(err => {
-      req.session.username = req.body.username
-    })
+    // req.session.regenerate(err => {
+    //   req.session.username = req.body.username
+    // })
+    req.session.username = req.body.username
     res.json(
       new Result({
         data: {
