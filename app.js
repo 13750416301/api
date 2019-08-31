@@ -51,21 +51,21 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(multer());
-app.use(session({
-  secret: 'secret',
-  resave: true,
-  saveUninitialized: false,
-  cookie:{
-      maxAge: 1000 * 60 * 10 //过期时间设置(单位毫秒)
-  }
-}));
-app.use(function(req, res, next){
-  　　res.locals.user = req.session.user;
-  　　var err = req.session.error;
-  　　res.locals.message = '';
-  　　if (err) res.locals.message = '<div style="margin-bottom: 20px;color:red;">' + err + '</div>';
-  　　next();
-  });
+// app.use(function(req, res, next){
+// 　　res.locals.user = req.session.user;
+// 　　var err = req.session.error;
+// 　　res.locals.message = '';
+// 　　if (err) res.locals.message = '<div style="margin-bottom: 20px;color:red;">' + err + '</div>';
+// 　　next();
+// });
+// app.use(session({
+//   secret: 'secret',
+//   resave: true,
+//   saveUninitialized: false,
+//   cookie:{
+//       maxAge: 1000 * 60 * 10 //过期时间设置(单位毫秒)
+//   }
+// }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads/',express.static(path.join(__dirname, 'uploads')));
 
@@ -88,7 +88,7 @@ app.use('/getArticleById', getArticleById);
 app.use('/addComment', addComment);
 app.use('/addBarrage', addBarrage);
 app.use('/login', login);
-app.user('/logout', logout);
+// app.user('/logout', logout);
 //app.use('/signIn', signIn);
 //app.use('/signUp', signUp);
 app.use('/getBarrageByVideoId', getBarrageByVideoId);

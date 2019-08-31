@@ -1,6 +1,7 @@
 var express = require('express');
 var mysql = require('mysql');
 var router = express.Router();
+var session = require('express-session');
 var option = {
   // host: 'localhost',
   host: '119.23.46.237',
@@ -11,6 +12,15 @@ var option = {
   connectTimeout: 5000,
   multipleStatements: true //支持执行多条sql语句
 }
+
+router.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: false,
+  cookie:{
+      maxAge: 1000 * 60 * 10 //过期时间设置(单位毫秒)
+  }
+}));
 
 var connect = mysql.createConnection(option);
 function Result({code = 0, msg = '200', data = {video: null, images: null, article: null}}) {
@@ -51,7 +61,7 @@ router.post('/', (req, res) =>{
     res.json(
       new Result({
         data: {
-          username: req.session.user,
+          username: req.session.username,
           password: req.body.password
         }
       })
