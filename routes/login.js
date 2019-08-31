@@ -34,15 +34,18 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) =>{
-  connect.query('SELECT authorName from author; SELECT password from author;', (err, result) => {
-    if((result[0].includes(req.body.username)) && (result[1].includes(req.body.password))) {
-      res.json({username: req.body.username, password: req.body.password});
-      res.send('登陆成功！')
-    } else {
-      res.json({username: req.body.username, password: req.body.password});
-      res.json('登陆失败')
-    }
-  })
+  // connect.query('SELECT authorName from author; SELECT password from author;', (err, result) => {
+  //   if((result[0].includes(req.body.username)) && (result[1].includes(req.body.password))) {
+  //     res.json({username: req.body.username, password: req.body.password});
+  //     res.send('登陆成功！')
+  //   } else {
+  //     res.json({username: req.body.username, password: req.body.password});
+  //     res.json('登陆失败')
+  //   }
+  // })
+  if(req.body.username === 'bobo' && req.body.password === '123') {
+    res.json({username: req.body.username, password: req.body.password});
+  }
 });
 
 module.exports = router;
