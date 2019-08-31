@@ -13,14 +13,14 @@ var option = {
   multipleStatements: true //支持执行多条sql语句
 }
 
-router.use(session({
-  secret: 'secret',
-  resave: true,
-  saveUninitialized: false,
-  cookie:{
-      maxAge: 1000 * 60 * 10 //过期时间设置(单位毫秒)
-  }
-}));
+// router.use(session({
+//   secret: 'secret',
+//   resave: true,
+//   saveUninitialized: false,
+//   cookie:{
+//       maxAge: 1000 * 60 * 10 //过期时间设置(单位毫秒)
+//   }
+// }));
 
 var connect = mysql.createConnection(option);
 function Result({code = 0, msg = '200', data = {video: null, images: null, article: null}}) {
