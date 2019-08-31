@@ -31,7 +31,7 @@ var getBarrageByVideoId = require('./routes/getBarrageByVideoId');
 var getCommentByVideoId = require('./routes/getCommentByVideoId');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
-
+var getUser = require('./routes/getUser')
 
 
 
@@ -50,14 +50,6 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
-// app.use(multer());
-// app.use(function(req, res, next){
-// 　　res.locals.user = req.session.user;
-// 　　var err = req.session.error;
-// 　　res.locals.message = '';
-// 　　if (err) res.locals.message = '<div style="margin-bottom: 20px;color:red;">' + err + '</div>';
-// 　　next();
-// });
 app.use(session({
   secret: 'secret',
   resave: true,
