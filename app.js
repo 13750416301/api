@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 var bodyParser = require('body-parser');
+var multer = require('multer')
 
 // 定义请求的路由
 var indexRouter = require('./routes/index');
@@ -27,6 +28,7 @@ var addBarrage = require('./routes/addBarrage');
 //var signUp = require('./routes/signUp');
 var getBarrageByVideoId = require('./routes/getBarrageByVideoId');
 var getCommentByVideoId = require('./routes/getCommentByVideoId');
+var login = require('./routes/login');
 
 
 
@@ -67,6 +69,7 @@ app.use('/getImageById', getImageById);
 app.use('/getArticleById', getArticleById);
 app.use('/addComment', addComment);
 app.use('/addBarrage', addBarrage);
+app.use('/login', login);
 //app.use('/signIn', signIn);
 //app.use('/signUp', signUp);
 app.use('/getBarrageByVideoId', getBarrageByVideoId);
