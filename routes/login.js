@@ -67,6 +67,7 @@ router.post('/', (req, res) =>{
         }
       })
     )
+    console.log(req.session.username)
   }
 });
 
