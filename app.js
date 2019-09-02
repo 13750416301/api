@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var session = require('express-session');
 var mysql = require('mysql');
+var cmd = require('node-cmd')
 var option = {
   // host: 'localhost',
   host: '119.23.46.237',
@@ -91,6 +92,7 @@ var getUser = require('./routes/getUser');
 var getVideoListByName = require('./routes/getVideoListByName')
 var getArticleListByName = require('./routes/getArticleListByName')
 var getImageListByName = require('./routes/getImageListByName')
+var uploadImage = require('./routes/uploadImage')
 
 // 使用路由
 app.use('/', indexRouter);
@@ -119,6 +121,7 @@ app.use('/getCommentByVideoId', getCommentByVideoId);
 app.use('/getVideoListByName', getVideoListByName);
 app.use('/getArticleListByName', getArticleListByName);
 app.use('/getImageListByName', getImageListByName);
+app.use('/uploadImage', uploadImage);
 
 function Result({code = 0, msg = '200', data = {}}) {
   this.code = code;
@@ -172,6 +175,7 @@ app.post('/login', (req, res) =>{
 });
 
 app.get('/getUser', (req, res) => {
+  // cmd.run('notepad');
   connect.query('SELECT * from author where authorName="' +　username + '"', (err, result) => {
     res.json(
       new Result({

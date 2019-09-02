@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
   destination: function(req, res, cb) {
     //cb(null, 'C:/Users/FOREVERBOBO/Downloads/My Documents/二级项目3/api/uploads');
     //cb(null,'D:/test1/destination');
-    cb(null,'C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/ROOT/videoWebSite/image');
+    cb(null, 'C:/Program Files/Apache Software Foundation/Tomcat 8.5/webapps/ROOT/videoWebSite/image');
   },
   filename: function(req, file, cb) {
     var filenameArr = file.originalname.split('.')
@@ -31,22 +31,30 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({storage});
-
+var src1 = null;
 router.post('/', upload.single("image"), function(req, res, next) {
  //得到文件路径
   res.send(req.file);
   var title= req.file.originalname;
-  var src1 = req.file.filename;
-  console.log("filemessage",title);
-  var sql ='insert into images (title,src1) values("' + title+ '","'+src1+'")';
-  connect.query(sql,function (err, rows, fields) {
-      if(err){
-            console.log('INSERT ERROR - ', err.message);
-            return;
-        }
-        console.log("INSERT SUCCESS");
-});
+  src1 = req.file.filename;
+  console.log("filemessage", title);
+  res.json({
+    filename: src1
+  })
+  res.send(src1)
+  // var sql ='insert into images (title,src1) values("' + title+ '","'+src1+'")';
+  // connect.query(sql, function (err, rows, fields) {
+  //   if(err){
+  //       console.log('INSERT ERROR - ', err.message);
+  //       return;
+  //   }
+  //   console.log("INSERT SUCCESS");
+  // });
 
 });
+
+router.get('/', (req, res) => {
+  res.json({filename: src1});
+})
 
 module.exports = router;
