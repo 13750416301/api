@@ -23,25 +23,19 @@ function Result({code = 0, msg = '200', data = {}}) {
 };
 
 router.post('/', function(req, res, next) {
-  //得到文件路径  
-	var title = req.body.title;
+  //得到文件路径    
+  var title = req.body.title;
   var area = req.body.area;
   var category = req.body.area;
   var src = req.body.src;
-	var authorId = req.body.authorId;
-	var authorName = req.body.authorName;
+  var authorId = req.body.authorId;
+  var authorName = req.body.authorName;
   var authorImg = req.body.authorImg;
   // var src0 = src.split('.').join('0.');
   var src0 = src.replace('mp4', 'jpg');
   var src1 = src.split('.').join('1.');
   var src2 = src.split('.').join('2.');
   var src3 = src.split('.').join('3.');
-  cmd.run('cd C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\ROOT\\videoWebSite\\video && ffmpeg -i ' + src + ' -ss 00:00:00 -t 1 -r 1 -q:v 2 -f image2 ' + src0);
-  // cmd.run('cd C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\ROOT\\videoWebSite\\video && notepad');
-  // cmd.run('ffmpeg -i ' + src + ' -vcodec h264 ' + src0);
-  // cmd.run('ffmpeg -i ' + src0 + ' -vf scale=-1:1080 ' + src1);
-  // cmd.run('ffmpeg -i ' + src0 + ' -vf scale=-1:720 ' + src2);
-  // cmd.run('ffmpeg -i ' + src0 + ' -vf scale=-1:480 ' + src3);
 	// var sql = 'insert into video (title,area,category,src1,src2,src3,authorId,authorName,authorImg) values("' + title + '","' + area + '","' + category + '","' + src1 + '","' + src2 + '","' + src3 + '","' + authorId + '","' + authorName + '","' + authorImg + '")';
   var sql = 'insert into video (title,area,category,src1,src2,src3,img,authorId,authorName,authorImg) values("' + title + '","' + area + '","' + category + '","' + src + '","' + src + '","' + src + '","' + src0 + '","' + authorId + '","' + authorName + '","' + authorImg + '")';
   connect.query(sql, (err) => {

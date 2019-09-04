@@ -3,6 +3,7 @@ var router = express.Router();
 var multer  = require('multer');
 var mysql = require('mysql');
 var path = require('path');
+var cmd = require('node-cmd');
 
 var option = {
   // host: 'localhost',
@@ -38,6 +39,8 @@ router.post('/', upload.single("image"), function(req, res, next) {
   var title= req.file.originalname;
   src1 = req.file.filename;
   console.log("filemessage", title);
+  // cmd.run('notepad');
+  cmd.run('cd C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\ROOT\\videoWebSite\\video && notepad');
   res.json({
     filename: src1
   })

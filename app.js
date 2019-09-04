@@ -93,6 +93,7 @@ var getVideoListByName = require('./routes/getVideoListByName')
 var getArticleListByName = require('./routes/getArticleListByName')
 var getImageListByName = require('./routes/getImageListByName')
 var uploadImage = require('./routes/uploadImage')
+var uploadMp4 = require('./routes/uploadMp4')
 
 // 使用路由
 app.use('/', indexRouter);
@@ -122,6 +123,7 @@ app.use('/getVideoListByName', getVideoListByName);
 app.use('/getArticleListByName', getArticleListByName);
 app.use('/getImageListByName', getImageListByName);
 app.use('/uploadImage', uploadImage);
+app.use('/uploadMp4', uploadMp4);
 
 function Result({code = 0, msg = '200', data = {}}) {
   this.code = code;
