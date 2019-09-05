@@ -25,19 +25,13 @@ function Result({code = 0, msg = '200', data = {}}) {
 router.post('/', function(req, res, next) {
   //得到文件路径    
   var title = req.body.title;
-  var area = req.body.area;
-  var category = req.body.area;
-  var src = req.body.src;
+  var content = req.body.content;
+  var img = req.body.img;
   var authorId = req.body.authorId;
   var authorName = req.body.authorName;
   var authorImg = req.body.authorImg;
-  // var src0 = src.split('.').join('0.');
-  var src0 = src.replace('mp4', 'jpg');
-  var src1 = src.split('.').join('1.');
-  var src2 = src.split('.').join('2.');
-  var src3 = src.split('.').join('3.');
 	// var sql = 'insert into video (title,area,category,src1,src2,src3,authorId,authorName,authorImg) values("' + title + '","' + area + '","' + category + '","' + src1 + '","' + src2 + '","' + src3 + '","' + authorId + '","' + authorName + '","' + authorImg + '")';
-  var sql = 'insert into video (title,area,category,src1,src2,src3,img,authorId,authorName,authorImg) values("' + title + '","' + area + '","' + category + '","' + src + '","' + src + '","' + src + '","' + src0 + '","' + authorId + '","' + authorName + '","' + authorImg + '")';
+  var sql = 'insert into article (title,content,img,authorId,authorName,authorImg) values("' + title + '","' + content + '","' + img + '","' + authorId + '","' + authorName + '","' + authorImg + '")';
   connect.query(sql, (err) => {
 		console.log('Insert success!');
 		console.log(sql)

@@ -40,7 +40,7 @@ router.post('/', upload.single("image"), function(req, res, next) {
   src1 = req.file.filename;
   console.log("filemessage", title);
   // cmd.run('notepad');
-  cmd.run('cd C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\ROOT\\videoWebSite\\video && notepad');
+  // cmd.run('cd C:\\Program Files\\Apache Software Foundation\\Tomcat 8.5\\webapps\\ROOT\\videoWebSite\\video && notepad');
   res.json({
     filename: src1
   })
