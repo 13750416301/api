@@ -15,7 +15,8 @@ var option = {
   user: 'root',
   password: 'admin',
   port: '3306',
-  database: 'video_website',
+  // database: 'video_website',
+  database: 'onlineexam',
   connectTimeout: 5000,
   multipleStatements: true //支持执行多条sql语句
 }
@@ -95,6 +96,15 @@ var getImageListByName = require('./routes/getImageListByName')
 var uploadImage = require('./routes/uploadImage')
 var uploadMp4 = require('./routes/uploadMp4')
 var uploadArticle = require('./routes/uploadArticle')
+var getUserList = require('./routes/getUserList')
+var getQuestionList = require('./routes/getQuestionList')
+var deleteUserById = require('./routes/deleteUserById')
+var deleteQuestionById = require('./routes/deleteQuestionById')
+var changeQuestionById = require('./routes/changeQuestionById')
+var getQuestionById = require('./routes/getQuestionById')
+var writePractice = require('./routes/writePractice')
+var getRecordByPracticeId = require('./routes/getRecordByPracticeId')
+var signIn = require('./routes/signIn')
 
 // 使用路由
 app.use('/', indexRouter);
@@ -126,6 +136,15 @@ app.use('/getImageListByName', getImageListByName);
 app.use('/uploadImage', uploadImage);
 app.use('/uploadMp4', uploadMp4);
 app.use('/uploadArticle', uploadArticle);
+app.use('/getUserList', getUserList);
+app.use('/getQuestionList', getQuestionList);
+app.use('/deleteUserById', deleteUserById);
+app.use('/deleteQuestionById', deleteQuestionById);
+app.use('/changeQuestionById', changeQuestionById);
+app.use('/getQuestionById', getQuestionById);
+app.use('/writePractice', writePractice);
+app.use('/getRecordByPracticeId', getRecordByPracticeId);
+app.use('/signIn', signIn);
 
 function Result({code = 0, msg = '200', data = {}}) {
   this.code = code;
@@ -148,6 +167,7 @@ function Result({code = 0, msg = '200', data = {}}) {
 //   }
 // });
 
+/*
 app.post('/login', (req, res) =>{
   var tag1 = 0;
   var tag2 = 0;
@@ -177,16 +197,60 @@ app.post('/login', (req, res) =>{
     // console.log(req.session.username)
     // req.session.save()
 });
+*/
+
+app.post('/login', (req, res) =>{
+  var tag1 = 0;
+  var tag2 = 0;
+  connect.query('SELECT userName from user; SELECT pwd from user;', (err, result) => {
+    result[0].forEach(item => {
+      if(item.userName === req.body.username) {
+        tag1 = 1;
+      }
+    });
+    result[1].forEach(item => {
+      if(item.pwd === req.body.pwd) {
+        tag2 = 1;
+      }
+    });
+    if(tag1 === 1 && tag2 === 1) {
+      username = req.body.username
+      connect.query('SELECT * from user where userName="' +　req.body.username + '"', (err1, result1) => {
+        res.json(
+          new Result({
+            data: result1[0]
+          })
+        )
+      })
+    }
+  });
+    // console.log(req.session)
+    // console.log(req.session.username)
+    // req.session.save()
+});
 
 app.get('/getUser', (req, res) => {
   // cmd.run('notepad');
-  connect.query('SELECT * from author where authorName="' +　username + '"', (err, result) => {
+  connect.query('SELECT * from user where userName="' +　username + '"', (err, result) => {
     res.json(
       new Result({
         data: result[0]
       })
     )
   })
+  
+  // console.log(req.session.username)
+  // console.log(req.session)
+});
+
+app.get('/logout', (req, res) => {
+  // cmd.run('notepad');
+  username = null;
+  res.json(
+	new Result({
+	  msg: '退出成功！'
+	})
+  )
   
   // console.log(req.session.username)
   // console.log(req.session)
